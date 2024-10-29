@@ -1,0 +1,6 @@
+{
+  "rules": {
+    "foo": {
+      ".validate": "newData.isString() && newData.val().length < 100"
+    }
+  }
