@@ -1,0 +1,1 @@
+  [FIRInAppMessaging inAppMessaging].messageDisplaySuppressed = YES;
