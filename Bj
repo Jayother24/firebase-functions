@@ -1,0 +1,23 @@
+//Remote Config fetches and activates parameter values from the service
+final FirebaseRemoteConfig config = FirebaseRemoteConfig.getInstance();
+config.fetch(3600)
+        .continueWithTask(new Continuation<Void, Task<Boolean>>() {
+            @Override
+            public Task<Boolean> then(@NonNull Task<Void> task) throws Exception {
+                if (!task.isSuccessful()) {
+                    throw task.getException();
+                }
+                return config.activate();
+            }
+        })
+        .addOnCompleteListener(new OnCompleteListener<Boolean>() {
+            @Override
+            public void onComplete(@NonNull Task<Boolean> task) {
+                if (task.isSuccessful()) {
+                    // Parameter values successfully activated
+                    // ...
+                } else {
+                    // Handle errors
+                }
+            }
+        });
